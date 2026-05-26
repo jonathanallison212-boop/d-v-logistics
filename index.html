@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="D&V Logistics – Reliable, efficient freight transportation from St. Louis, Missouri. Your route to success.">
+    <title>D&V Logistics | St. Louis, Missouri</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --navy: #1B2B5E;
+            --navy-dark: #111E42;
+            --navy-light: #243574;
+            --red: #C0272D;
+            --red-dark: #9E1F24;
+            --white: #FFFFFF;
+            --off-white: #F4F6F9;
+            --gray: #E8ECF0;
+            --text-dark: #1A1A1A;
+            --text-gray: #5C6475;
+            --font-heading: 'Barlow Condensed', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --max-width: 1240px;
+            --nav-height: 80px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-lg: 0 16px 48px rgba(0,0,0,0.18);
+            --transition: 0.3s ease;
+            --radius: 8px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); color: var(--text-dark); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+        img { max-width: 100%; height: auto; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 14px 32px; border-radius: 4px;
+            font-family: var(--font-heading); font-size: 1rem; font-weight: 700;
+            letter-spacing: 0.05em; text-transform: uppercase;
+            cursor: pointer; border: none; transition: all var(--transition);
+        }
+        .btn-primary { background: var(--red); color: var(--white); }
+        .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(192,39,45,0.35); }
+        .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.6); }
+        .btn-outline:hover { background: var(--white); color: var(--navy); border-color: var(--white); }
+        .btn-white { background: var(--white); color: var(--red); }
+        .btn-white:hover { background: var(--off-white); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+        .btn-outline-white { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.45); }
+        .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+
+        .section-label {
+            font-family: var(--font-heading); font-size: 0.8125rem; font-weight: 700;
+            letter-spacing: 0.15em; text-transform: uppercase; color: var(--red);
+            margin-bottom: 12px; display: block;
+        }
+        .section-title {
+            font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800; line-height: 1.1; color: var(--navy); margin-bottom: 16px;
+        }
+        .section-desc { font-size: 1.0625rem; color: var(--text-gray); max-width: 600px; line-height: 1.7; }
+
+        /* ── NAVBAR ── */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            height: var(--nav-height);
+            background: rgba(17,30,66,0.96); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            transition: all var(--transition);
+        }
+        .navbar.scrolled { background: var(--navy-dark); box-shadow: var(--shadow-md); }
+        .nav-inner {
+            max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
+            height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 32px;
+        }
+        .nav-logo img { height: 58px; width: auto; display: block; }
+        .nav-links { display: flex; align-items: center; gap: 36px; }
+        .nav-links a {
+            font-family: var(--font-heading); font-size: 0.9375rem; font-weight: 600;
+            letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.82);
+            transition: color var(--transition); position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+            height: 2px; background: var(--red); transform: scaleX(0); transition: transform var(--transition);
+        }
+        .nav-links a:hover { color: var(--white); }
+        .nav-links a:hover::after { transform: scaleX(1); }
+        .nav-cta { display: flex; align-items: center; gap: 16px; }
+        .nav-phone { font-family: var(--font-heading); font-size: 0.9375rem; font-weight: 600; color: rgba(255,255,255,0.65); }
+        .nav-phone i { color: var(--red); margin-right: 6px; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+        .hamburger span { display: block; width: 26px; height: 2px; background: var(--white); border-radius: 2px; transition: all var(--transition); }
+
+        .mobile-nav {
+            display: none; position: fixed; top: var(--nav-height); left: 0; right: 0;
+            background: var(--navy-dark); padding: 24px; z-index: 999;
+            border-top: 3px solid var(--red); box-shadow: var(--shadow-lg);
+        }
+        .mobile-nav.open { display: block; }
+        .mobile-nav a {
+            display: block; font-family: var(--font-heading); font-size: 1.125rem;
+            font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+            color: var(--white); padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .mobile-nav a.mobile-cta { color: var(--red); border-bottom: none; margin-top: 8px; }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative; min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background: var(--navy-dark); overflow: hidden; padding-top: var(--nav-height);
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 45%, #1a2f6e 70%, var(--navy-dark) 100%);
+        }
+        .hero-stripes {
+            position: absolute; inset: -50%;
+            background: repeating-linear-gradient(
+                -45deg, transparent, transparent 60px,
+                rgba(255,255,255,0.018) 60px, rgba(255,255,255,0.018) 120px
+            );
+            animation: stripeDrift 22s linear infinite;
+        }
+        @keyframes stripeDrift { 0% { transform: translate(0,0); } 100% { transform: translate(120px,120px); } }
+
+        .hero-accent-bar { position: absolute; top: var(--nav-height); left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--red-dark), var(--red), #e84040, var(--red)); }
+
+        .hero-content { position: relative; z-index: 1; text-align: center; padding: 60px 24px; max-width: 920px; }
+
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: rgba(192,39,45,0.12); border: 1px solid rgba(192,39,45,0.35);
+            color: #ff9090; font-family: var(--font-heading); font-size: 0.8125rem;
+            font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+            padding: 7px 20px; border-radius: 100px; margin-bottom: 32px;
+        }
+        .hero-badge-dot { width: 8px; height: 8px; background: var(--red); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(0.75); } }
+
+        .hero-title {
+            font-family: var(--font-heading); font-size: clamp(3.25rem, 9vw, 6.5rem);
+            font-weight: 800; line-height: 0.95; color: var(--white);
+            letter-spacing: -0.01em; margin-bottom: 10px;
+        }
+        .hero-title .accent { color: var(--red); font-style: italic; }
+        .hero-subtitle {
+            font-family: var(--font-heading); font-size: clamp(1.25rem, 3.5vw, 2rem);
+            font-weight: 600; color: rgba(255,255,255,0.45); letter-spacing: 0.18em;
+            text-transform: uppercase; margin-bottom: 28px;
+        }
+        .hero-desc { font-size: 1.125rem; color: rgba(255,255,255,0.62); max-width: 580px; margin: 0 auto 44px; line-height: 1.8; }
+        .hero-actions { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+        .hero-scroll {
+            position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            color: rgba(255,255,255,0.3); font-family: var(--font-heading);
+            font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; z-index: 1;
+        }
+        .hero-scroll i { animation: bounce 2s ease-in-out infinite; }
+        @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+        /* ── VIDEO SECTION ── */
+        .video-section { background: var(--off-white); padding: 88px 24px; }
+        .video-wrapper { max-width: var(--max-width); margin: 0 auto; }
+        .video-header { text-align: center; margin-bottom: 44px; }
+        .video-placeholder {
+            position: relative; width: 100%; padding-bottom: 56.25%;
+            background: var(--navy-dark); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-lg);
+        }
+        .video-placeholder video { border-radius: 14px; }
+
+        /* ── SERVICES ── */
+        .services { padding: 100px 24px; background: var(--white); }
+        .services-header { margin-bottom: 60px; }
+        .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+
+        .service-card {
+            background: var(--white); border: 1px solid var(--gray); border-radius: var(--radius);
+            padding: 36px 30px; transition: all var(--transition); position: relative; overflow: hidden;
+        }
+        .service-card::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+            height: 3px; background: var(--red); transform: scaleX(0); transition: transform var(--transition);
+        }
+        .service-card:hover { border-color: transparent; box-shadow: var(--shadow-lg); transform: translateY(-6px); }
+        .service-card:hover::after { transform: scaleX(1); }
+
+        .service-icon {
+            width: 56px; height: 56px; background: rgba(27,43,94,0.07);
+            border-radius: var(--radius); display: flex; align-items: center; justify-content: center;
+            margin-bottom: 24px; transition: all var(--transition);
+        }
+        .service-card:hover .service-icon { background: var(--red); }
+        .service-icon i { font-size: 1.5rem; color: var(--navy); transition: color var(--transition); }
+        .service-card:hover .service-icon i { color: var(--white); }
+        .service-card h3 { font-family: var(--font-heading); font-size: 1.375rem; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+        .service-card p { font-size: 0.9375rem; color: var(--text-gray); line-height: 1.65; }
+        .service-link {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-family: var(--font-heading); font-size: 0.875rem; font-weight: 700;
+            color: var(--red); letter-spacing: 0.05em; text-transform: uppercase;
+            margin-top: 20px; transition: gap var(--transition);
+        }
+        .service-card:hover .service-link { gap: 10px; }
+
+        /* ── STATS ── */
+        .stats { background: var(--navy); padding: 72px 24px; position: relative; overflow: hidden; }
+        .stats::before {
+            content: ''; position: absolute; inset: 0;
+            background: repeating-linear-gradient(90deg, transparent, transparent 200px, rgba(255,255,255,0.018) 200px, rgba(255,255,255,0.018) 201px);
+        }
+        .stats-grid { display: grid; grid-template-columns: 1fr 1px 1fr 1px 1fr 1px 1fr; gap: 0; align-items: center; position: relative; }
+        .stat-divider { background: rgba(255,255,255,0.12); height: 60px; }
+        .stat-item { text-align: center; padding: 0 40px; }
+        .stat-number { font-family: var(--font-heading); font-size: clamp(2.5rem,5vw,4rem); font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 8px; }
+        .stat-number span { color: var(--red); }
+        .stat-label { font-family: var(--font-heading); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+
+        /* ── ABOUT ── */
+        .about { padding: 100px 24px; background: var(--off-white); }
+        .about-grid { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+        .about-image { position: relative; }
+        .about-img-placeholder {
+            width: 100%; border-radius: 14px; box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--navy-dark), var(--navy-light));
+            min-height: 440px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 20px;
+            position: relative; overflow: hidden;
+        }
+        .about-img-placeholder::before {
+            content: ''; position: absolute; inset: 0;
+            background: repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(255,255,255,0.02) 30px, rgba(255,255,255,0.02) 60px);
+        }
+        .about-img-placeholder img { width: 180px; position: relative; filter: drop-shadow(0 8px 28px rgba(0,0,0,0.5)); }
+        .about-badge {
+            position: absolute; bottom: -20px; right: -16px;
+            background: var(--red); color: var(--white);
+            padding: 22px 26px; border-radius: var(--radius); box-shadow: var(--shadow-lg); text-align: center;
+        }
+        .about-badge .big-number { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 800; line-height: 1; display: block; }
+        .about-badge .badge-label { font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; }
+
+        .about-content .section-desc { max-width: 100%; margin-bottom: 16px; }
+        .about-features { display: flex; flex-direction: column; gap: 18px; margin-top: 36px; }
+        .about-feature { display: flex; align-items: flex-start; gap: 16px; }
+        .about-feature-icon { width: 44px; height: 44px; background: rgba(192,39,45,0.1); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .about-feature-icon i { color: var(--red); font-size: 1rem; }
+        .about-feature-text h4 { font-family: var(--font-heading); font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+        .about-feature-text p { font-size: 0.875rem; color: var(--text-gray); line-height: 1.6; }
+
+        /* ── WHY ── */
+        .why { padding: 100px 24px; background: var(--white); }
+        .why-inner { max-width: var(--max-width); margin: 0 auto; }
+        .why-header { text-align: center; max-width: 640px; margin: 0 auto 64px; }
+        .why-header .section-desc { margin: 0 auto; }
+        .why-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 28px; }
+
+        .why-card { text-align: center; padding: 44px 24px; border-radius: var(--radius); background: var(--off-white); transition: all var(--transition); }
+        .why-card:hover { background: var(--navy-dark); }
+        .why-card:hover h3, .why-card:hover p { color: var(--white); }
+        .why-card:hover .why-icon { background: var(--red); }
+        .why-card:hover .why-icon i { color: var(--white); }
+        .why-icon { width: 72px; height: 72px; background: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; transition: background var(--transition); box-shadow: var(--shadow-sm); }
+        .why-icon i { font-size: 1.75rem; color: var(--navy); transition: color var(--transition); }
+        .why-card h3 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--navy); margin-bottom: 12px; transition: color var(--transition); }
+        .why-card p { font-size: 0.9rem; color: var(--text-gray); line-height: 1.65; transition: color var(--transition); }
+
+        /* ── COVERAGE ── */
+        .coverage { background: var(--navy-dark); padding: 100px 24px; position: relative; overflow: hidden; }
+        .coverage::before { content: ''; position: absolute; right: -200px; top: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(192,39,45,0.07) 0%, transparent 70%); }
+        .coverage-inner { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .coverage-content .section-title { color: var(--white); }
+        .coverage-content .section-desc { color: rgba(255,255,255,0.58); }
+        .coverage-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 36px; }
+        .coverage-item { display: flex; align-items: center; gap: 12px; font-family: var(--font-heading); font-size: 0.9375rem; font-weight: 600; color: rgba(255,255,255,0.78); letter-spacing: 0.02em; }
+        .coverage-item i { color: var(--red); }
+        .map-box {
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px; min-height: 340px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 20px; text-align: center; padding: 48px;
+        }
+        .map-box i { font-size: 5rem; color: rgba(255,255,255,0.12); }
+        .map-box h3 { font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: var(--white); }
+        .map-box p { font-size: 0.9375rem; color: rgba(255,255,255,0.38); }
+
+        /* ── CTA BANNER ── */
+        .cta-banner { background: var(--red); padding: 88px 24px; text-align: center; position: relative; overflow: hidden; }
+        .cta-banner::before {
+            content: ''; position: absolute; inset: 0;
+            background: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(0,0,0,0.04) 40px, rgba(0,0,0,0.04) 80px);
+        }
+        .cta-inner { position: relative; max-width: 700px; margin: 0 auto; }
+        .cta-banner h2 { font-family: var(--font-heading); font-size: clamp(2rem,5vw,3.5rem); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 16px; }
+        .cta-banner p { font-size: 1.125rem; color: rgba(255,255,255,0.8); margin-bottom: 40px; }
+        .cta-actions { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+        /* ── CONTACT ── */
+        .contact { padding: 100px 24px; background: var(--off-white); }
+        .contact-inner { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 1fr 1.5fr; gap: 72px; }
+        .contact-info h2 { font-family: var(--font-heading); font-size: clamp(1.75rem,3vw,2.5rem); font-weight: 800; color: var(--navy); line-height: 1.1; margin-bottom: 16px; }
+        .contact-info > p { color: var(--text-gray); margin-bottom: 40px; line-height: 1.7; }
+        .contact-details { display: flex; flex-direction: column; gap: 22px; }
+        .contact-detail { display: flex; align-items: flex-start; gap: 16px; }
+        .contact-detail-icon { width: 44px; height: 44px; background: var(--navy); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .contact-detail-icon i { color: var(--white); }
+        .contact-detail-text strong { display: block; font-family: var(--font-heading); font-size: 0.8125rem; font-weight: 700; color: var(--navy); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 3px; }
+        .contact-detail-text span { font-size: 0.9375rem; color: var(--text-gray); }
+
+        .quote-form { background: var(--white); padding: 48px; border-radius: 14px; box-shadow: var(--shadow-md); }
+        .quote-form h3 { font-family: var(--font-heading); font-size: 1.625rem; font-weight: 800; color: var(--navy); margin-bottom: 28px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; font-family: var(--font-heading); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); margin-bottom: 7px; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 13px 16px; border: 1.5px solid var(--gray);
+            border-radius: var(--radius); font-family: var(--font-body); font-size: 0.9375rem;
+            color: var(--text-dark); background: var(--white); transition: border-color var(--transition); outline: none;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--navy); }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .form-submit {
+            width: 100%; padding: 16px; background: var(--red); color: var(--white);
+            border: none; border-radius: var(--radius); font-family: var(--font-heading);
+            font-size: 1.0625rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+            cursor: pointer; transition: all var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .form-submit:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(192,39,45,0.35); }
+
+        /* ── FOOTER ── */
+        footer { background: var(--navy-dark); color: rgba(255,255,255,0.65); }
+        .footer-main { padding: 72px 24px; }
+        .footer-grid { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; }
+        .footer-brand img { height: 70px; width: auto; margin-bottom: 18px; display: block; }
+        .footer-brand p { font-size: 0.9rem; line-height: 1.7; max-width: 280px; }
+        .footer-socials { display: flex; gap: 10px; margin-top: 22px; }
+        .social-link { width: 38px; height: 38px; background: rgba(255,255,255,0.07); border-radius: 6px; display: flex; align-items: center; justify-content: center; transition: all var(--transition); color: rgba(255,255,255,0.55); font-size: 0.9rem; }
+        .social-link:hover { background: var(--red); color: var(--white); }
+        .footer-col h4 { font-family: var(--font-heading); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); margin-bottom: 20px; }
+        .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+        .footer-col ul a { font-size: 0.9rem; color: rgba(255,255,255,0.5); transition: color var(--transition); }
+        .footer-col ul a:hover { color: var(--white); }
+        .footer-contact-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+        .footer-contact-item i { color: var(--red); font-size: 0.875rem; margin-top: 3px; flex-shrink: 0; }
+        .footer-contact-item span { font-size: 0.9rem; line-height: 1.5; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding: 24px; }
+        .footer-bottom-inner { max-width: var(--max-width); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+        .footer-bottom p { font-size: 0.85rem; color: rgba(255,255,255,0.32); }
+        .footer-bottom-links { display: flex; gap: 24px; }
+        .footer-bottom-links a { font-size: 0.85rem; color: rgba(255,255,255,0.32); transition: color var(--transition); }
+        .footer-bottom-links a:hover { color: rgba(255,255,255,0.65); }
+
+        .scroll-top {
+            position: fixed; bottom: 32px; right: 32px; width: 48px; height: 48px;
+            background: var(--red); color: var(--white); border: none; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; opacity: 0; transform: translateY(16px);
+            transition: all var(--transition); z-index: 100; box-shadow: var(--shadow-md);
+        }
+        .scroll-top.visible { opacity: 1; transform: translateY(0); }
+        .scroll-top:hover { background: var(--red-dark); transform: translateY(-4px); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(2,1fr); }
+            .why-grid { grid-template-columns: repeat(2,1fr); }
+            .stats-grid { grid-template-columns: repeat(2,1fr); gap: 48px; }
+            .stat-divider { display: none; }
+            .about-grid, .coverage-inner, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+            .about-badge { right: 0; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+        }
+        @media (max-width: 768px) {
+            :root { --nav-height: 70px; }
+            .nav-links, .nav-phone { display: none; }
+            .hamburger { display: flex; }
+            .services-grid, .why-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2,1fr); }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+            .coverage-list { grid-template-columns: 1fr; }
+            .quote-form { padding: 28px 20px; }
+            .footer-bottom-inner { flex-direction: column; text-align: center; }
+        }
+        @media (max-width: 480px) {
+            .hero-actions, .cta-actions { flex-direction: column; width: 100%; }
+            .hero-actions .btn, .cta-actions .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">
+            <img src="brand_assets/ChatGPT Image May 25, 2026, 05_21_02 AM.png" alt="D&V Logistics">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#coverage">Coverage</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-cta">
+            <span class="nav-phone"><i class="fas fa-phone"></i>(314) 000-0000</span>
+            <a href="#contact" class="btn btn-primary">Get a Quote</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+    <a href="#services" onclick="closeMobileNav()">Services</a>
+    <a href="#about" onclick="closeMobileNav()">About Us</a>
+    <a href="#coverage" onclick="closeMobileNav()">Coverage</a>
+    <a href="#contact" onclick="closeMobileNav()">Contact</a>
+    <a href="#contact" class="mobile-cta" onclick="closeMobileNav()">Get a Free Quote →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-stripes"></div>
+    <div class="hero-accent-bar"></div>
+
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            St. Louis, Missouri · Nationwide Coverage
+        </div>
+        <h1 class="hero-title">
+            Your Route<br>to <span class="accent">Success.</span>
+        </h1>
+        <p class="hero-subtitle">D&amp;V Logistics</p>
+        <p class="hero-desc">
+            Reliable. Efficient. Professional. From St. Louis to wherever you need to go —
+            we deliver more than freight. We deliver peace of mind.
+        </p>
+        <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">
+                <i class="fas fa-truck-fast"></i> Get a Free Quote
+            </a>
+            <a href="#services" class="btn btn-outline">
+                Our Services <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="hero-scroll">
+        <span>Scroll</span>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- VIDEO PLACEHOLDER -->
+<section class="video-section" id="video">
+    <div class="video-wrapper">
+        <div class="video-header">
+            <span class="section-label">D&amp;V In Motion</span>
+            <h2 class="section-title">Driven by Commitment.<br>Powered by Professionals.</h2>
+        </div>
+        <div class="video-placeholder">
+            <video
+                src="brand_assets/20260525_162658_UTC_0_V1_V1.mp4"
+                controls
+                autoplay
+                muted
+                loop
+                playsinline
+                style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:14px;"
+            ></video>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+    <div class="container">
+        <div class="services-header">
+            <span class="section-label">What We Offer</span>
+            <h2 class="section-title">Freight Solutions<br>Built for Your Business</h2>
+            <p class="section-desc">From a single shipment to a dedicated fleet solution, D&amp;V Logistics delivers comprehensive transportation services tailored to your needs.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-truck"></i></div>
+                <h3>Full Truckload (FTL)</h3>
+                <p>Dedicated truckloads moving your cargo directly to its destination with no stops in between. Maximum efficiency, minimum transit time.</p>
+                <span class="service-link">Learn More <i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-boxes-stacked"></i></div>
+                <h3>Less Than Truckload (LTL)</h3>
+                <p>Cost-effective shipping for smaller loads. Share trailer space and only pay for what you use — without sacrificing speed or reliability.</p>
+                <span class="service-link">Learn More <i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-dolly"></i></div>
+                <h3>Flatbed &amp; Specialized</h3>
+                <p>Heavy equipment, oversized loads, and specialty cargo handled with expertise. We have the equipment and experience for complex hauls.</p>
+                <span class="service-link">Learn More <i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-bolt"></i></div>
+                <h3>Expedited Freight</h3>
+                <p>When time is critical, our expedited service ensures your cargo reaches its destination on schedule — no exceptions, no excuses.</p>
+                <span class="service-link">Learn More <i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-diagram-project"></i></div>
+                <h3>Logistics Management</h3>
+                <p>End-to-end supply chain visibility and coordination. We manage the complexity so you can focus on what matters most — your business.</p>
+                <span class="service-link">Learn More <i class="fas fa-arrow-right"></i></span>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-shield-check"></i></div>
+                <h3>Dedicated Fleet Services</h3>
+                <p>A dedicated fleet that acts as an extension of your operation. Consistent drivers, consistent service, consistent results — every time.</p>
+                <span class="service-link">Learn More <i class="fas fa-arrow-right"></i></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">48<span>+</span></div>
+                <div class="stat-label">States Served</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-number">100<span>K+</span></div>
+                <div class="stat-label">Miles Delivered</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-number">100<span>%</span></div>
+                <div class="stat-label">On-Time Commitment</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-number">24<span>/7</span></div>
+                <div class="stat-label">Dispatch &amp; Support</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <div class="about-grid">
+        <div class="about-image">
+            <div class="about-img-placeholder">
+                <img src="brand_assets/ChatGPT Image May 25, 2026, 05_22_35 AM.png" alt="D&V Logistics">
+            </div>
+            <div class="about-badge">
+                <span class="big-number">STL</span>
+                <span class="badge-label">Home Base</span>
+            </div>
+        </div>
+        <div class="about-content">
+            <span class="section-label">Our Story</span>
+            <h2 class="section-title">From St. Louis,<br>To Anywhere.</h2>
+            <p class="section-desc">D&amp;V Logistics was built on a simple promise: deliver more than freight — deliver peace of mind. Rooted in St. Louis, Missouri, we bring Midwestern work ethic and an uncompromising commitment to every client we serve.</p>
+            <p class="section-desc">We are a trucking and logistics company dedicated to building long-term partnerships. Whether you're moving goods across town or across the country, D&amp;V Logistics has the experience, equipment, and drive to get it done right.</p>
+            <div class="about-features">
+                <div class="about-feature">
+                    <div class="about-feature-icon"><i class="fas fa-handshake"></i></div>
+                    <div class="about-feature-text">
+                        <h4>Relationship-First Approach</h4>
+                        <p>We invest in every partnership, treating your cargo like our own every mile of the journey.</p>
+                    </div>
+                </div>
+                <div class="about-feature">
+                    <div class="about-feature-icon"><i class="fas fa-map-pin"></i></div>
+                    <div class="about-feature-text">
+                        <h4>St. Louis Roots, National Reach</h4>
+                        <p>Headquartered in the heart of America's transportation corridor — perfectly positioned for the country.</p>
+                    </div>
+                </div>
+                <div class="about-feature">
+                    <div class="about-feature-icon"><i class="fas fa-certificate"></i></div>
+                    <div class="about-feature-text">
+                        <h4>Fully Licensed &amp; Insured</h4>
+                        <p>FMCSA certified with comprehensive cargo and liability coverage you can count on.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why" id="why">
+    <div class="why-inner">
+        <div class="why-header">
+            <span class="section-label">Why D&amp;V Logistics</span>
+            <h2 class="section-title">What Sets Us Apart</h2>
+            <p class="section-desc">In an industry built on trust, we earn it every mile, every delivery, every single day.</p>
+        </div>
+        <div class="why-grid">
+            <div class="why-card">
+                <div class="why-icon"><i class="fas fa-clock"></i></div>
+                <h3>On-Time Delivery</h3>
+                <p>Your timeline is our top priority. We plan every route to keep your supply chain moving on schedule.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon"><i class="fas fa-headset"></i></div>
+                <h3>24/7 Dispatch</h3>
+                <p>Our team is always reachable. Real people, real answers — any hour of the day or night.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon"><i class="fas fa-location-dot"></i></div>
+                <h3>Real-Time Tracking</h3>
+                <p>Know exactly where your freight is at all times with transparent, up-to-the-minute updates.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon"><i class="fas fa-shield-halved"></i></div>
+                <h3>Cargo Security</h3>
+                <p>Comprehensive insurance and careful handling protocols keep your goods protected door-to-door.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COVERAGE -->
+<section class="coverage" id="coverage">
+    <div class="coverage-inner">
+        <div class="coverage-content">
+            <span class="section-label" style="color:#ff8888;">Coverage Area</span>
+            <h2 class="section-title">From St. Louis<br>to All 48 States</h2>
+            <p class="section-desc">Strategically positioned in the center of the country, D&amp;V Logistics can reach any destination in the continental United States efficiently and cost-effectively.</p>
+            <div class="coverage-list">
+                <div class="coverage-item"><i class="fas fa-check-circle"></i> Midwest</div>
+                <div class="coverage-item"><i class="fas fa-check-circle"></i> Southeast</div>
+                <div class="coverage-item"><i class="fas fa-check-circle"></i> Northeast</div>
+                <div class="coverage-item"><i class="fas fa-check-circle"></i> Southwest</div>
+                <div class="coverage-item"><i class="fas fa-check-circle"></i> Pacific Northwest</div>
+                <div class="coverage-item"><i class="fas fa-check-circle"></i> Mountain States</div>
+            </div>
+            <a href="#contact" class="btn btn-primary" style="margin-top:36px;">
+                Get a Route Quote <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        <div>
+            <div class="map-box">
+                <i class="fas fa-map-location-dot"></i>
+                <h3>48 States. One Team.</h3>
+                <p>Continental U.S. coverage from our St. Louis, MO hub</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+    <div class="cta-inner">
+        <h2>Ready to Move<br>Your Freight?</h2>
+        <p>Get a free, no-obligation quote from D&amp;V Logistics today. We'll build a solution that fits your timeline and your budget.</p>
+        <div class="cta-actions">
+            <a href="#contact" class="btn btn-white">
+                <i class="fas fa-file-invoice"></i> Request a Free Quote
+            </a>
+            <a href="tel:+13140000000" class="btn btn-outline-white">
+                <i class="fas fa-phone"></i> Call Us Now
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT / QUOTE FORM -->
+<section class="contact" id="contact">
+    <div class="contact-inner">
+        <div class="contact-info">
+            <span class="section-label">Contact Us</span>
+            <h2>Let's Talk About<br>Your Freight Needs</h2>
+            <p>Whether you have a one-time shipment or need an ongoing logistics partner, our team is ready to build a solution that works for you.</p>
+            <div class="contact-details">
+                <div class="contact-detail">
+                    <div class="contact-detail-icon"><i class="fas fa-location-dot"></i></div>
+                    <div class="contact-detail-text">
+                        <strong>Headquarters</strong>
+                        <span>St. Louis, Missouri, USA</span>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon"><i class="fas fa-phone"></i></div>
+                    <div class="contact-detail-text">
+                        <strong>Phone</strong>
+                        <span>(314) 000-0000</span>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-detail-text">
+                        <strong>Email</strong>
+                        <span>info@dvlogisticsstl.com</span>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <div class="contact-detail-icon"><i class="fas fa-clock"></i></div>
+                    <div class="contact-detail-text">
+                        <strong>Dispatch Hours</strong>
+                        <span>24 Hours / 7 Days a Week</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-form">
+            <h3>Request a Free Quote</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" placeholder="John">
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" placeholder="Smith">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Company</label>
+                    <input type="text" placeholder="Your Company">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" placeholder="(314) 000-0000">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" placeholder="you@company.com">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Origin</label>
+                    <input type="text" placeholder="City, State">
+                </div>
+                <div class="form-group">
+                    <label>Destination</label>
+                    <input type="text" placeholder="City, State">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Service Type</label>
+                    <select>
+                        <option value="">Select a service...</option>
+                        <option>Full Truckload (FTL)</option>
+                        <option>Less Than Truckload (LTL)</option>
+                        <option>Flatbed / Specialized</option>
+                        <option>Expedited Freight</option>
+                        <option>Logistics Management</option>
+                        <option>Dedicated Fleet</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Freight Type</label>
+                    <select>
+                        <option value="">Select type...</option>
+                        <option>General Cargo</option>
+                        <option>Palletized</option>
+                        <option>Heavy Equipment</option>
+                        <option>Oversized Load</option>
+                        <option>Temperature Sensitive</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Additional Details</label>
+                <textarea placeholder="Tell us more — weight, dimensions, special requirements, preferred pickup date..."></textarea>
+            </div>
+            <button class="form-submit" id="formSubmit">
+                <i class="fas fa-paper-plane"></i> Submit Quote Request
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-main">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="brand_assets/ChatGPT Image May 25, 2026, 05_21_02 AM.png" alt="D&V Logistics">
+                <p>Reliable, efficient freight transportation from the heart of America. Delivering more than freight — delivering peace of mind.</p>
+                <div class="footer-socials">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Full Truckload</a></li>
+                    <li><a href="#services">Less Than Truckload</a></li>
+                    <li><a href="#services">Flatbed &amp; Specialized</a></li>
+                    <li><a href="#services">Expedited Freight</a></li>
+                    <li><a href="#services">Logistics Management</a></li>
+                    <li><a href="#services">Dedicated Fleet</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#why">Why D&amp;V</a></li>
+                    <li><a href="#coverage">Coverage Area</a></li>
+                    <li><a href="#contact">Get a Quote</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <div class="footer-contact-item">
+                    <i class="fas fa-location-dot"></i>
+                    <span>St. Louis, Missouri, USA</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>(314) 000-0000</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@dvlogisticsstl.com</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Dispatch: 24/7</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+            <p>&copy; 2025 D&amp;V Logistics, LLC. All rights reserved. St. Louis, Missouri.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">DOT Compliance</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 60);
+        scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    });
+    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Mobile nav
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => mobileNav.classList.toggle('open'));
+    function closeMobileNav() { mobileNav.classList.remove('open'); }
+
+    // Smooth scroll with nav offset
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 80;
+                window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - offset, behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Form submit feedback
+    document.getElementById('formSubmit').addEventListener('click', function(e) {
+        e.preventDefault();
+        this.innerHTML = '<i class="fas fa-check"></i> Quote Request Sent!';
+        this.style.background = '#1e7e45';
+        setTimeout(() => {
+            this.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Quote Request';
+            this.style.background = '';
+        }, 3500);
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.service-card, .why-card, .stat-item').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(24px)';
+        el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+        observer.observe(el);
+    });
+</script>
+</body>
+</html>
