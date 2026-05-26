@@ -11,9 +11,11 @@ Desktop.ini
 .vscode/
 *.code-workspace
 
-# Node (in case you add a build step later)
+# Node
 node_modules/
 npm-debug.log*
+package.json
+package-lock.json
 
 # Environment variables (never commit secrets)
 .env
